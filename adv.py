@@ -30,6 +30,16 @@ player = Player(world.starting_room)
 # traversal_path = ['n', 'n']
 traversal_path = []
 
+# keep track of "reverse" directions
+# use this to return to a room with valid moves
+backtrack = []
+reversed_directions = {'n': 's', 's': 'n', 'e': 'w', 'w': 'e'}
+
+# instantiate a set to keep track of visited rooms
+visited = set()
+
+
+
 # TRAVERSAL TEST - DO NOT MODIFY
 visited_rooms = set()
 player.current_room = world.starting_room

@@ -5,23 +5,7 @@ from world import World
 import random
 from ast import literal_eval
 
-# implement Queue
-class Queue():
-    def __init__(self):
-        self.queue = []
 
-    def enqueue(self, value):
-        self.queue.append(value)
-
-    def dequeue(self):
-        if self.size() > 0:
-            return self.queue.pop(0)
-        else:
-            return None
-
-    def size(self):
-        return len(self.queue)
-        
 # Load world
 world = World()
 
@@ -46,8 +30,6 @@ player = Player(world.starting_room)
 # traversal_path = ['n', 'n']
 traversal_path = []
 
-
-
 # TRAVERSAL TEST - DO NOT MODIFY
 visited_rooms = set()
 player.current_room = world.starting_room
@@ -62,8 +44,6 @@ if len(visited_rooms) == len(room_graph):
 else:
     print("TESTS FAILED: INCOMPLETE TRAVERSAL")
     print(f"{len(room_graph) - len(visited_rooms)} unvisited rooms")
-
-
 
 #######
 # UNCOMMENT TO WALK AROUND

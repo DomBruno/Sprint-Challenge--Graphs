@@ -38,7 +38,35 @@ reversed_directions = {'n': 's', 's': 'n', 'e': 'w', 'w': 'e'}
 # instantiate a set to keep track of visited rooms
 visited = set()
 
+# while there are still unvisited rooms
+while len(visited) < len(room_graph):
 
+    # initialize next move as None
+    next_move = None
+
+     # for each exit(neighbor) in the room expressed by (n,s,e,w)
+    for ex in player.current_room.get_exits():
+         # for each exit, if its not been visited, set as the next move
+        if player.current_room.get_room_in_direction(ex) not in visited:
+            next_move = ex
+    # if there is a viable move...
+    if next_move is not None:
+        # append the move to the traversal_path (list of all steps taken)
+        traversal_path.append(next_move)
+        # add the reversed direction to the breadcrumb trail (backtrack)
+        backtrack.append(reversed_directions[next_move])
+        # make the move and add room to visited list
+        player.travel(next_move)  
+        visited.add(player.current_room)
+    else:
+        # there is no valid room = use backtrack to go back and find a room
+        # with a valid move
+        # pop the last entry from backtrack
+        next_move = backtrack.pop()
+        # add that move to traversal path
+        traversal_path.append(next_move)
+        # make the move
+        player.travel(next_move)
 
 # TRAVERSAL TEST - DO NOT MODIFY
 visited_rooms = set()

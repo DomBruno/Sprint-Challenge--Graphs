@@ -58,7 +58,7 @@ while len(visited) < len(room_graph):
         # make the move and add room to visited list
         player.travel(next_move)  
         visited.add(player.current_room)
-    else:
+    
         # there is no valid room = use backtrack to go back and find a room
         # with a valid move
         # pop the last entry from backtrack
